@@ -1,0 +1,22 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: d2ee667ji12uoi
+  pool: 5
+  username: kptyfsstaxgizu
+  password: FiKjKatD8v_RaJCSy_ZHKLB0HA
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: d2ee667ji12uoi
+  pool: 5
+  username: kptyfsstaxgizu
+  password: FiKjKatD8v_RaJCSy_ZHKLB0HA
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: d2ee667ji12uoi
+  pool: 5
+  username: kptyfsstaxgizu
+  password: FiKjKatD8v_RaJCSy_ZHKLB0HA
