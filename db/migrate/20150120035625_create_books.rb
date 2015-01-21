@@ -10,6 +10,7 @@ class CreateBooks < ActiveRecord::Migration
       t.datetime :published_date
       t.decimal :unit_price
       t.string :photo
+      t.integer :category_id
       t.integer :total_rating_count
       t.decimal :total_rating_value
       t.timestamps null: false

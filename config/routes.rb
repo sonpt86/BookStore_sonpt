@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions" ,confirmation: "users/confirmations", passwords:"users/passwords", registrations:"users/registrations"}
+  resources :users do
+    collection do
+      get 'view'
+    end
+  end
   resources :books
+
 
   root 'books#index'
   # The priority is based upon order of creation: first created -> highest priority.

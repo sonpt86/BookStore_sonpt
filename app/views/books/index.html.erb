@@ -22,13 +22,25 @@
         <%= link_to "SingUp", "users/sign_up" %>
         <%= link_to "SingIn", "users/sign_in" %>
     <%else%>
-        Hello <%= link_to current_user.full_name,"users/user_profile" %>
-        <%= link_to "Log out", "users/sign_out" , method: :delete%>
+        Hello <%= link_to current_user.full_name, current_user , method: :get%>
+        <%= link_to "Log out", destroy_user_session_path , method: :delete%>
+        <%= link_to "Change password", edit_user_registration_path , method: :get%>
     <% end %>
   </td>
 </tr>
 
 </table>
+
+<table>
+
+  <% @categories.each do |category| %>
+    <tr>
+        <td><%= link_to category.name, "?category=#{category.id}"%></td>
+    </tr>
+  <% end %>
+
+</table>
+
 <table>
 
   <tr>

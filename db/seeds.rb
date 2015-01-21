@@ -7,4 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #   User.create([{name:'son1',email:'son111@@'},{name:'thao',email:'thaooo@@'}])
 users = User.create([{full_name:'son1',email:'son111@@',password:'1233'},{full_name:'thao',email:'thaooo@@',password:'1212111'}])
-books = Book.create([{title:'cuon theo chieu gio',author_name:'thai son',description:'best seller',image_url:'1.jpg',total_rating_value:'3'},{title:'su troi day cua bay cuu',author_name:'son',description:'top award',image_url:'2.jpg',total_rating_value:'4'},{title:'tat den',author_name:'ngo tat to',description:'top award',image_url:'2.jpg',total_rating_value:'4'}])
+books = Book.create([{title:'cuon theo chieu gio',author_name:'thai son',description:'best seller',image_url:'1.jpg',category_id:'1',total_rating_value:'3'},{title:'su troi day cua bay cuu',author_name:'son',description:'top award',image_url:'2.jpg',category_id:'2',total_rating_value:'4'},{title:'tat den',author_name:'ngo tat to',description:'top award',image_url:'2.jpg',category_id:'2',total_rating_value:'4'}])
+categories = Category.create([{name:'trinh tham',sort_order:'0'},{name:'vien tuong',sort_order:'1'}])

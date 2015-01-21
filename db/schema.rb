@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20150121050940) do
     t.datetime "published_date"
     t.decimal  "unit_price"
     t.string   "photo"
+    t.integer  "category_id"
     t.integer  "total_rating_count"
     t.decimal  "total_rating_value"
     t.datetime "created_at",         null: false
@@ -33,11 +34,10 @@ ActiveRecord::Schema.define(version: 20150121050940) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.integer  "category_id"
     t.integer  "sort_order"
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "comments", force: :cascade do |t|
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20150121050940) do
 
   create_table "users", force: :cascade do |t|
     t.string   "full_name"
+    t.string   "phone"
     t.datetime "birthday"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
