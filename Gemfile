@@ -33,6 +33,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'capistrano-rails', group: :development
 gem 'rename'
 gem 'pg'
+gem 'devise'
+gem 'responders'
 
 group :development, :test do
   gem 'sqlite3'

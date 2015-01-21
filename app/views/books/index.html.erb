@@ -1,0 +1,61 @@
+<html>
+<head>
+
+</head>
+
+<body>
+
+<h1>Listing Books</h1>
+<br>
+
+<table>
+
+<tr>
+  <td>
+  <form action="/books" method="GET">
+    Search: <input width = 800 type="text" name="keyword" > <input type="submit" value="Submit">
+  </form>
+  </td>
+  <td>
+    <% if !user_signed_in? %>
+        Hello Guest
+        <%= link_to "SingUp", "users/sign_up" %>
+        <%= link_to "SingIn", "users/sign_in" %>
+    <%else%>
+        Hello <%= link_to current_user.full_name,"users/user_profile" %>
+        <%= link_to "Log out", "users/sign_out" , method: :delete%>
+    <% end %>
+  </td>
+</tr>
+
+</table>
+<table>
+
+  <tr>
+    <th width = 200>Book Title</th>
+    <th width = 400>Book Author</th>
+    <th width = 400>Book Description</th>
+    <th width = 400>Book Cover</th>
+    <th width = 400>Rating</th>
+
+  </tr>
+
+  <% @books.each do |book| %>
+
+              <tr>
+                <td align="center"><%= link_to book.title, book %></td>
+                <td align="center"><%= link_to book.author_name, "?author=#{book.author_name}" %></td>
+                <td align="center"><%= book.description %></td>
+                <td align="center"><%= image_tag(book.image_url, height: '200', width: '200') %></td>
+                <td align="center"><%= book.total_rating_value %></td>
+                <td align="center"><%= link_to 'view', book %></td>
+              </tr>
+
+  <% end %>
+</table>
+
+<br>
+
+
+</body>
+</html>

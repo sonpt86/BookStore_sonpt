@@ -1,0 +1,27 @@
+
+
+<h1>Books Details</h1>
+<br>
+
+<table>
+
+  <tr>
+    <th width = 200>Book Title</th>
+    <th width = 400>Book Author</th>
+    <th width = 400>Book Description</th>
+    <th width = 400>Book Cover</th>
+    <th width = 400>Rating</th>
+
+  </tr>
+
+
+  <tr>
+     <td align="center"><%= @book.title %></td>
+     <td align="center"><%= @book.author_name %></td>
+     <td align="center"><%= @book.description %></td>
+     <td align="center"><%= image_tag(@book.image_url, height: '200', width: '200') %></td>
+     <td align="center"><%= @book.total_rating_value %></td>
+     <td align="center"><%= link_to 'view', @book %></td>
+  </tr>
+
+</table>

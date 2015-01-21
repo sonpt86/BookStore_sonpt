@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  resources :microposts
+  devise_for :users, controllers: { sessions: "users/sessions" ,confirmation: "users/confirmations", passwords:"users/passwords", registrations:"users/registrations"}
+  resources :books
 
-  resources :users
-
-  root 'application#hello'
+  root 'books#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
