@@ -21,6 +21,20 @@
      <td align="center"><%= @book.description %></td>
      <td align="center"><%= image_tag(@book.image_url, height: '200', width: '200') %></td>
      <td align="center"><%= @book.total_rating_value %></td>
+     <td>
+       <div class="row">
+         <div class="small-2 large-2 columns">
+           <%= imdb_style_rating_for @book, current_user%>
+         </div>
+         <br>
+         <div class="small-2 large-4 columns">
+           <% if current_user %>
+               Book Content: <%= rating_for @book, "book_content" %>
+               <br>
+           <% end %>
+         </div>
+       </div>
+     </td>
      <td align="center"><%= link_to 'view', @book %></td>
   </tr>
 

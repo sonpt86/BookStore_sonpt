@@ -35,6 +35,7 @@ gem 'rename'
 gem 'pg'
 gem 'devise'
 gem 'responders'
+gem 'ratyrate'
 
 group :development, :test do
   gem 'sqlite3'
