@@ -19,23 +19,15 @@
      <td align="center"><%= @book.title %></td>
      <td align="center"><%= @book.author_name %></td>
      <td align="center"><%= @book.description %></td>
-     <td align="center"><%= image_tag(@book.image_url, height: '200', width: '200') %></td>
-     <td align="center"><%= @book.total_rating_value %></td>
-     <td>
-       <div class="row">
-         <div class="small-2 large-2 columns">
-           <%= imdb_style_rating_for @book, current_user%>
-         </div>
-         <br>
-         <div class="small-2 large-4 columns">
+     <td align="center"><%= link_to image_tag(@book.image_url, height: '200', width: '200'), @book%></td>
+     <td align="center">
+           Rating :<%= @book.average("book_content").avg %>
+           <%= rating_for @book, "book_content" ,:disable_after_rate => false%>
+           <br>
            <% if current_user %>
-               Book Content: <%= rating_for @book, "book_content" %>
-               <br>
-           <% end %>
-         </div>
-       </div>
+             Your rating: <%= Rate.find_by_rater_id_and_rateable_id_and_dimension(current_user.id, @book.id, "book_content").stars%>
+           <% end%>
      </td>
-     <td align="center"><%= link_to 'view', @book %></td>
   </tr>
 
 </table>

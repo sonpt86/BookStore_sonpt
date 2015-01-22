@@ -8,6 +8,29 @@
 </head>
 <body>
 
+<table>
+
+  <tr>
+    <td>
+      <form action="/books" method="GET">
+        Search: <input width = 800 type="text" name="keyword" > <input type="submit" value="Submit">
+      </form>
+    </td>
+    <td>
+      <% if !user_signed_in? %>
+          Hello Guest
+          <%= link_to "SingUp", new_user_registration_path ,method: :get%>
+          <%= link_to "SingIn", new_user_session_path %>
+      <%else%>
+          Hello <%= link_to current_user.full_name, current_user , method: :get%>
+          <%= link_to "Log out", destroy_user_session_path , method: :delete%>
+          <%= link_to "Change password", edit_user_registration_path , method: :get%>
+      <% end %>
+    </td>
+  </tr>
+
+</table>
+
 <%= yield %>
 
 </body>

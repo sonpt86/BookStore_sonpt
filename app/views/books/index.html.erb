@@ -8,28 +8,7 @@
 <h1>Listing Books</h1>
 <br>
 
-<table>
 
-<tr>
-  <td>
-  <form action="/books" method="GET">
-    Search: <input width = 800 type="text" name="keyword" > <input type="submit" value="Submit">
-  </form>
-  </td>
-  <td>
-    <% if !user_signed_in? %>
-        Hello Guest
-        <%= link_to "SingUp", "users/sign_up" %>
-        <%= link_to "SingIn", "users/sign_in" %>
-    <%else%>
-        Hello <%= link_to current_user.full_name, current_user , method: :get%>
-        <%= link_to "Log out", destroy_user_session_path , method: :delete%>
-        <%= link_to "Change password", edit_user_registration_path , method: :get%>
-    <% end %>
-  </td>
-</tr>
-
-</table>
 
 <table>
 
@@ -58,8 +37,17 @@
                 <td align="center"><%= link_to book.title, book %></td>
                 <td align="center"><%= link_to book.author_name, "?author=#{book.author_name}" %></td>
                 <td align="center"><%= book.description %></td>
-                <td align="center"><%= image_tag(book.image_url, height: '200', width: '200') %></td>
-                <td align="center"><%= book.total_rating_value %></td>
+                <td align="center">
+                  <%= link_to image_tag(book.image_url, height: '200', width: '200'), book%>
+                </td>
+                <td align="center">
+                  Rating :<%= book.average("book_content").avg %>
+                    <%= rating_for book, "book_content" ,:disable_after_rate => false%>
+                  <br>
+                  <% if current_user %>
+                      Your rating: <%= Rate.find_by_rater_id_and_rateable_id_and_dimension(current_user.id, book.id, "book_content").stars%>
+                  <% end%>
+                </td>
                 <td align="center"><%= link_to 'view', book %></td>
               </tr>
 
