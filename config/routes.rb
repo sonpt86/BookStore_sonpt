@@ -6,7 +6,9 @@ Rails.application.routes.draw do
       get 'view'
     end
   end
-  resources :books
+  resources :books do
+    resources :comments
+  end
 
 
   root 'books#index'

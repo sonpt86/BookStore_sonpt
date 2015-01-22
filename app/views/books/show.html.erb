@@ -21,13 +21,53 @@
      <td align="center"><%= @book.description %></td>
      <td align="center"><%= link_to image_tag(@book.image_url, height: '200', width: '200'), @book%></td>
      <td align="center">
-           Rating :<%= @book.average("book_content").avg %>
-           <%= rating_for @book, "book_content" ,:disable_after_rate => false%>
-           <br>
-           <% if current_user %>
-             Your rating: <%= Rate.find_by_rater_id_and_rateable_id_and_dimension(current_user.id, @book.id, "book_content").stars%>
-           <% end%>
-     </td>
+       <% if @book.average("book_content")%>
+          Rating :<%= @book.average("book_content").avg %>
+       <% end%>
+       <%= rating_for @book, "book_content" ,:disable_after_rate => false%>
+       <br>
+       <% if current_user && Rate.find_by_rater_id_and_rateable_id_and_dimension(current_user.id, @book.id, "book_content") %>
+          Your rating: <%= Rate.find_by_rater_id_and_rateable_id_and_dimension(current_user.id, @book.id, "book_content").stars%>
+       <% end%>
+    </td>
   </tr>
 
 </table>
+
+
+<br>
+<table>
+  <tr>
+    <th>User</th>
+    <th>Title</th>
+    <th>Comment</th>
+  </tr>
+  <% @book.comments.each do |comment| %>
+    <tr>
+      <td>
+        <% if comment.user_id %>
+          <%= User.find(comment.user_id).full_name %>
+        <% else %>
+          Anonymus
+        <% end %>
+      </td>
+      <td>
+        <%= comment.title %>
+      </td>
+      <td>
+        <%= comment.comment %>
+      </td>
+    </tr>
+  <% end %>
+
+
+</table>
+
+New Comment
+
+<%= form_for [@book, @comment] do |f| %>
+    <%= f.text_field :title %>
+    <%= f.text_area :comment, size: "60x12" %>
+    <%= f.submit "Create" %>
+<% end %>
+

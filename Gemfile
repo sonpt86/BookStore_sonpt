@@ -36,6 +36,7 @@ gem 'pg'
 gem 'devise'
 gem 'responders'
 gem 'ratyrate'
+gem 'acts_as_commentable'
 
 group :development, :test do
   gem 'sqlite3'

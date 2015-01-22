@@ -12,9 +12,9 @@
 
   <tr>
     <td>
-      <form action="/books" method="GET">
+      <%= form_tag("/books", method: "get") do %>
         Search: <input width = 800 type="text" name="keyword" > <input type="submit" value="Submit">
-      </form>
+      <% end %>
     </td>
     <td>
       <% if !user_signed_in? %>
